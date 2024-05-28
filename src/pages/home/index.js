@@ -1,13 +1,13 @@
 import React from 'react'
-import VideoPlayer from './components/VideoPlayer'
 import Loading from './components/Loading'
+import Menus from './components/Menus'
 import './index.scss'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app-container">
       <Loading />
-      <VideoPlayer />
+      <Menus />
     </div>
   )
 }
