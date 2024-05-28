@@ -1,5 +1,5 @@
 import React from 'react'
-// import myVideo from '../../assets/intro.mp4'
+import myVideo from '../../assets/1.mp4'
 
 function App() {
   return (
@@ -9,6 +9,9 @@ function App() {
         Your browser does not support HTML5 video.
       </video> */}
       <video src="https://cowherdmyl-6g4qp1up02368618-1317320311.tcloudbaseapp.com/intro.mp4" controls>
+        Your browser does not support the video tag.
+      </video>
+      <video src={myVideo} controls>
         Your browser does not support the video tag.
       </video>
     </div>
