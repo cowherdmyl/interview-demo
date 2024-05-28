@@ -29,14 +29,11 @@ function VideoPlayer() {
 
   return (
     <>
-      {showImg ? (
-        <img src={imgbg} alt="" />
-      ) : (
-        <video ref={videoRef} loop playsInline>
-          <source src={videoSource} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
+      <img id="bgImg" src={imgbg} alt="" style={{ display: showImg ? 'block' : 'none' }} />
+      <video id="bgVideo" ref={videoRef} loop playsInline style={{ display: showImg ? 'none' : 'block' }}>
+        <source src={videoSource} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </>
   )
 }

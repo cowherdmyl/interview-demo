@@ -1,0 +1,35 @@
+// 背景视频和图片
+@media (min-width: 1024px) {
+  #bgVideo {
+    display: block !important;
+  }
+
+  #bgImg {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  #bgVideo {
+    display: none !important;
+  }
+
+  #bgImg {
+    display: block !important;
+  }
+}
+
+// loading
+.loading-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #320d7f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
