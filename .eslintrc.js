@@ -14,7 +14,6 @@ module.exports = {
   },
   ignorePatterns: ['node_modules', 'dist', 'disttsc', 'typings', 'index.html'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
