@@ -22,6 +22,7 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "@typescript-eslint/eslint-plugin": "^5.32.0",

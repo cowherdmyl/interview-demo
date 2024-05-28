@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './pages/home/index.tsx'
+import App from './pages/home/index.js'
 import reportWebVitals from './reportWebVitals'
 import 'normalize.css'
 
