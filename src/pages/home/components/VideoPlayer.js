@@ -9,16 +9,7 @@ function VideoPlayer() {
     // 检查 videoRef 是否指向一个 DOM 元素
     if (videoRef.current) {
       videoRef.current.muted = true // 确保视频静音
-      videoRef.current
-        .play()
-        .then(() => {
-          // 自动播放开始
-          console.log('视频自动播放已开始。')
-        })
-        .catch(error => {
-          // 自动播放失败
-          console.error('视频自动播放失败：', error)
-        })
+      videoRef.current.play()
     }
   }, []) // 空依赖数组意味着这个 useEffect 只在组件挂载时执行一次
 
