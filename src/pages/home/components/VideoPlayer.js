@@ -28,13 +28,13 @@ function VideoPlayer() {
   }, []) // 空依赖数组意味着这个 useEffect 只在组件挂载时执行一次
 
   return (
-    <>
+    <div className="video-player">
       <img id="bgImg" src={imgbg} alt="" style={{ display: showImg ? 'block' : 'none' }} />
       <video id="bgVideo" ref={videoRef} loop playsInline style={{ display: showImg ? 'none' : 'block' }}>
         <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </>
+    </div>
   )
 }
 
