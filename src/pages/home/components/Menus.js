@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Menu, Row, Col, Progress } from 'antd'
 import logoWhite from '../../../assets/logo-white.svg'
+import HamburgerMenu from './HamburgerMenu'
 
 function Menus() {
   const [menukey, setMenukey] = useState('0')
@@ -68,7 +69,7 @@ function Menus() {
           />
         </Col>
         <Col span={4}>
-          <div className="menu-hamburger">donghua</div>
+          <HamburgerMenu />
         </Col>
       </Row>
     </div>
