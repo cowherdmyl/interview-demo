@@ -47,11 +47,11 @@ const ScrollAnimationExample = ({ setPercent }) => {
         // const scale = Math.max(1 - distanceToCenter / container.clientHeight, 0.5);
         let scale
         if (elementCenter - containerCenter >= 0) {
-          scale = Math.max(1.2 - (distanceToCenter / container.clientHeight) * 2, 0.5)
+          scale = Math.max(1.2 - (distanceToCenter / container.clientHeight) * 2.5, 0.5)
         } else {
-          scale = 1.2 + (distanceToCenter / container.clientHeight) * 2
+          scale = 1.2 + (distanceToCenter / container.clientHeight) * 2.5
         }
-        const opacity = Math.max(1 - (distanceToCenter / (container.clientHeight / 2)) * 2, 0.1)
+        const opacity = Math.max(1 - (distanceToCenter / (container.clientHeight / 2)) * 1.2, 0.1)
         element.style.transform = `scale(${scale})`
         element.style.opacity = opacity
         if (index === 3) {

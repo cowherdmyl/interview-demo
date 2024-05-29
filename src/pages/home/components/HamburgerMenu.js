@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const HamburgerMenu = () => {
+const HamburgerMenu = ({ setShowHamburgerMask }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   // 定义动画变量
@@ -13,7 +13,7 @@ const HamburgerMenu = () => {
       transition: { duration: 0.4, times: [0, 0.5, 1] },
     },
     open: {
-      rotate: [0, -20, 45],
+      rotate: [0, -20, 35],
       translateY: 10,
       transition: {
         duration: 0.4,
@@ -39,13 +39,18 @@ const HamburgerMenu = () => {
       translateX: [0, -5, 0],
       transition: { duration: 0.4 },
     },
-    open: { rotate: 135, translateY: -10, transition: { duration: 0.4 } },
+    open: { rotate: 145, translateY: -10, transition: { duration: 0.4 } },
+  }
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+    setShowHamburgerMask(!isOpen)
   }
 
   return (
     <div
       className="hamburger-menu"
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={() => handleClick()}
       style={{
         cursor: 'pointer',
         display: 'flex',
