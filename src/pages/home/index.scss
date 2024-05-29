@@ -14,11 +14,12 @@
 @media (min-width: 1024px) {
   #bgVideo {
     display: block !important;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100vh;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // height: 100%;
+    width: 100%;
   }
 
   #bgImg {
@@ -77,6 +78,9 @@
     padding-bottom: 4px;
   }
 
+  .text-scroll-item {
+    font-size: 14px;
+  }
 }
 
 // PC+平板
@@ -94,6 +98,9 @@
     padding-bottom: 4px;
   }
 
+  .text-scroll-item {
+    font-size: 34px;
+  }
 }
 
 // loading
@@ -179,6 +186,15 @@
     height: calc(100% - 30px);
     width: calc(100% - 30px);
     overflow: hidden;
+
+    .video-player-mask {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
   }
 
   .text-scroll-wrapper {
@@ -187,12 +203,12 @@
     height: 60vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    z-index: 2;
 
     .text-scroll-item {
-      height: 100px;
+      height: 90px;
       background-color: transparent;
       color: #fff;
-      font-size: 48px;
       text-align: center;
     }
   }

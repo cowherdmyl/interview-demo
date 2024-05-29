@@ -3,9 +3,8 @@ import { Menu, Row, Col, Progress } from 'antd'
 import logoWhite from '../../../assets/logo-white.svg'
 import HamburgerMenu from './HamburgerMenu'
 
-function Menus() {
+function Menus({ percent }) {
   const [menukey, setMenukey] = useState('0')
-  const [percent, setPercent] = useState(0)
   const handleMenuClick = e => {
     setMenukey(e.key)
     // 你可以在这里根据 e.key 来区分不同的菜单项并执行相应的逻辑

@@ -29,6 +29,7 @@ function VideoPlayer() {
 
   return (
     <div className="video-player">
+      <div className="video-player-mask"></div>
       <img id="bgImg" src={imgbg} alt="" style={{ display: showImg ? 'block' : 'none' }} />
       <video id="bgVideo" ref={videoRef} loop playsInline style={{ display: showImg ? 'none' : 'block' }}>
         <source src={videoSource} type="video/mp4" />

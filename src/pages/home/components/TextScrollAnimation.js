@@ -1,94 +1,97 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const ScrollAnimationExample = () => {
+const ScrollAnimationExample = ({ setPercent }) => {
   const containerRef = useRef(null)
-  const [elements, setElements] = useState([])
+  const textList = [
+    'When you want something,',
+    'all the universe conspires',
+    'in helping you to achieve it.',
+    'Paulo Coelho',
+    '',
+    '',
+    'Feed is that conspiracy:',
+    'the conspiracy of trust.',
+    '',
+    '',
+    'Trust is the single',
+    'most important ingredient',
+    'missing from digital relationships.',
+    '',
+    '',
+    'Boston Consulting Group',
+    'and the World Economic Forum',
+    'forecast the digital economy',
+    'to be worth between',
+    '1.5 and 2.5 trillion dollars',
+    'by 2016.',
+    '',
+    '',
+    'The difference',
+    'between those numbers',
+    'is trust.',
+    '',
+    '',
+    'Feed is a digital mechanism of trust',
+  ]
 
-  // 初始化子元素的状态
-  useEffect(() => {
-    const textList = [
-      'When you want something,',
-      'all the universe conspires',
-      'in helping you to achieve it.',
-      'Paulo Coelho',
-      '',
-      'Feed is that conspiracy:',
-      'the conspiracy of trust.',
-      '',
-      'Trust is the single',
-      'most important ingredient',
-      'missing from digital relationships.',
-      '',
-      'Boston Consulting Group',
-      'and the World Economic Forum',
-      'forecast the digital economy',
-      'to be worth between',
-      '1.5 and 2.5 trillion dollars',
-      'by 2016.',
-      '',
-      'The difference',
-      'between those numbers',
-      'is trust.',
-      '',
-      'Feed is a digital mechanism of trust',
-    ]
-    const initialElements = textList.map((item, index) => ({
-      id: item,
-      index,
-      scale: 1,
-      opacity: 1,
-    }))
-    setElements(initialElements)
-  }, [])
+  // 计算并应用动画效果
+  const applyAnimation = () => {
+    const container = containerRef.current
+    const containerCenter = container.scrollTop + container.clientHeight / 2
+    document.querySelectorAll('.text-scroll-item').forEach((element, index) => {
+      if (element) {
+        const elementTop = element.offsetTop
+        const elementCenter = elementTop + element.clientHeight / 2
+        const distanceToCenter = Math.abs(elementCenter - containerCenter)
+        // const scale = Math.max(1 - distanceToCenter / container.clientHeight, 0.5);
+        let scale
+        if (elementCenter - containerCenter >= 0) {
+          scale = Math.max(1.2 - (distanceToCenter / container.clientHeight) * 2, 0.5)
+        } else {
+          scale = 1.2 + (distanceToCenter / container.clientHeight) * 2
+        }
+        const opacity = Math.max(1 - (distanceToCenter / (container.clientHeight / 2)) * 2, 0.1)
+        element.style.transform = `scale(${scale})`
+        element.style.opacity = opacity
+        if (index === 3) {
+          element.style.fontStyle = 'italic'
+        }
+        if (index === 3 || index === 19 || index === 20) {
+          element.style.fontWeight = 'bold'
+        }
+        if (index === 0) {
+          element.style.marginTop = '23.5vh'
+        }
+        if (textList.length - 1 === index) {
+          element.style.marginBottom = '30vh'
+        }
+      }
+    })
+  }
 
-  // 监听容器内部的滚动事件并更新子元素的状态
+  // 监听滚动事件并应用动画
   useEffect(() => {
     const container = containerRef.current
     const handleScroll = () => {
-      if (container) {
-        const containerCenter = container.scrollTop + container.clientHeight / 2
-
-        const updatedElements = elements.map(element => {
-          const elementRef = document.getElementById(`element-${element.id}`)
-          if (elementRef) {
-            const elementTop = elementRef.offsetTop
-            const elementCenter = elementTop + elementRef.clientHeight / 2
-            const distanceToCenter = Math.abs(elementCenter - containerCenter)
-            let scale
-            if (elementCenter - containerCenter >= 0) {
-              scale = Math.max(1 - distanceToCenter / container.clientHeight, 0.5)
-            } else {
-              scale = 1 + distanceToCenter / container.clientHeight
-            }
-            const opacity = Math.max(1 - distanceToCenter / (container.clientHeight / 2), 0.1)
-
-            return { ...element, scale, opacity }
-          }
-          return element
-        })
-
-        setElements(updatedElements)
-      }
+      requestAnimationFrame(applyAnimation)
+      const container = containerRef.current
+      const percent = (container.scrollTop / (container.scrollHeight - container.clientHeight)) * 100
+      setPercent(Math.round(percent))
     }
-
     container.addEventListener('scroll', handleScroll)
 
+    // 首次加载时应用一次动画
+    applyAnimation()
+
     return () => container.removeEventListener('scroll', handleScroll)
-  }, [elements])
+  }, [])
 
   return (
     <div ref={containerRef} className="text-scroll-wrapper">
-      {elements.map(element => (
-        <motion.div
-          className="text-scroll-item"
-          style={{ marginTop: element.index === 0 ? 300 : 0 }}
-          key={element.index}
-          id={`element-${element.id}`}
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: element.scale, opacity: element.opacity }}
-          transition={{ duration: 0.5 }}>
-          {element.id}
+      {textList.map((item, index) => (
+        <motion.div className="text-scroll-item" key={index}>
+          {item}
         </motion.div>
       ))}
     </div>
