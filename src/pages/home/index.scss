@@ -1,6 +1,7 @@
 .app-container {
   background-color: #e6e6e6;
   overflow-y: scroll;
+  padding-bottom: calc(env(safe-area-inset-bottom));
 }
 
 // pc
@@ -217,9 +218,7 @@
       color: #fff;
       font-weight: bold;
       font-family: "Avenir Next Bold", sans-serif;
-      transform: matrix(1, 0, 0, 1, 0, 0);
       text-transform: uppercase;
-      position: relative;
       height: 100%;
 
       // display: grid;
@@ -239,7 +238,7 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      align-self: end;
+      // align-self: end;
 
       .hamburger-mask-name {
         color: #7db025;
