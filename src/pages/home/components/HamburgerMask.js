@@ -32,7 +32,7 @@ function HamburgerMask({ isVisible }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }} // 持续时间为 1 秒
         >
-          <div className="hamburger-mask-text" style={{ display: show ? 'block' : 'none' }}>
+          <div className="hamburger-mask-text" style={{ display: show ? 'flex' : 'none' }}>
             <AnimatePresence onExitComplete={handleExit}>
               {isVisible &&
                 TextLines.map((line, index) => (
