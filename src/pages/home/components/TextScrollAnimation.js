@@ -52,6 +52,10 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
         const elementCenter = elementTop + element.clientHeight / 2
         const distanceToCenter = Math.abs(elementCenter - containerCenter)
         // const scale = Math.max(1 - distanceToCenter / container.clientHeight, 0.5);
+        console.log('distanceToCenter:', distanceToCenter)
+        console.log('containerCenter:', containerCenter)
+        console.log('containerCenter:', containerCenter)
+        console.log('container.clientHeight:', container.clientHeight)
         let scale
         if (elementCenter - containerCenter >= 0) {
           scale = Math.max(1.2 - (distanceToCenter / container.clientHeight) * 2.5, 0.5)
