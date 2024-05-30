@@ -4,18 +4,18 @@ import logoWhite from '../../../assets/logo-white.svg'
 import HamburgerMenu from './HamburgerMenu'
 import HamburgerMask from './HamburgerMask'
 
-function Menus({ percent }) {
+function Menus({ percent, handleScroll }) {
   const [menukey, setMenukey] = useState('0')
   const [showHamburgerMask, setShowHamburgerMask] = useState(false)
   const handleMenuClick = e => {
     setMenukey(e.key)
     // 你可以在这里根据 e.key 来区分不同的菜单项并执行相应的逻辑
-    // if (e.key === '0') {
-    //   handleSetScrollSecond(0)
-    // }
-    // if (e.key === '1') {
-    //   handleSetScrollSecond(2070)
-    // }
+    if (e.key === '0') {
+      handleScroll('firstScreen')
+    }
+    if (e.key === '1') {
+      handleScroll('secondScreen')
+    }
   }
   const menuItems = [
     {

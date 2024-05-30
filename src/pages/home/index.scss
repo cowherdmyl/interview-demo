@@ -1,9 +1,15 @@
 .app-container {
+  height: 100vh;
+  width: 100vw;
   background-color: #e6e6e6;
   overflow-y: scroll;
   padding-bottom: env(safe-area-inset-bottom);
   /* 旧的iOS版本支持 */
   padding-bottom: constant(safe-area-inset-bottom);
+}
+
+.app-container::-webkit-scrollbar {
+  display: none;
 }
 
 // pc
@@ -377,4 +383,26 @@
     z-index: 2;
     padding-bottom: 14px;
   }
+}
+
+.transition-box-wrapper {
+  .transition-box-up {
+    background-color: rgb(230, 230, 230);
+    width: 100vw;
+  }
+
+  .transition-box-down {
+    background-color: rgb(53, 1, 127);
+    width: 100vw;
+    height: 80vh;
+  }
+}
+
+.second-screen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../assets/presentation-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

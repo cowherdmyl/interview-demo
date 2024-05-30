@@ -3,10 +3,10 @@ import VideoPlayer from './VideoPlayer'
 import TextScrollAnimation from './TextScrollAnimation'
 import { motion } from 'framer-motion'
 
-function FirstScreen({ setPercent }) {
+function FirstScreen({ setPercent, showFirstScreen = true }, ref) {
   const [showText, setShowText] = useState(true)
   return (
-    <div className="first-screen">
+    <div ref={ref} className="first-screen" style={{ display: showFirstScreen ? 'block' : 'none' }}>
       <VideoPlayer />
       <TextScrollAnimation setPercent={setPercent} setShowText={setShowText} />
       {/* 中间底部小滚轮 */}
@@ -36,4 +36,4 @@ function FirstScreen({ setPercent }) {
   )
 }
 
-export default FirstScreen
+export default React.forwardRef(FirstScreen)
