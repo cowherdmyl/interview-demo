@@ -53,7 +53,7 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
         const distanceToCenter = Math.abs(elementCenter - containerCenter)
         // const scale = Math.max(1 - distanceToCenter / container.clientHeight, 0.5);
         console.log('distanceToCenter:', distanceToCenter)
-        console.log('containerCenter:', containerCenter)
+        console.log('elementCenter:', elementCenter)
         console.log('containerCenter:', containerCenter)
         console.log('container.clientHeight:', container.clientHeight)
         let scale
@@ -71,12 +71,12 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
         if (index === 3 || index === 19 || index === 20) {
           element.style.fontWeight = 'bold'
         }
-        if (index === 0) {
-          element.style.marginTop = '23.5vh'
-        }
-        if (textList.length - 1 === index) {
-          element.style.marginBottom = '30vh'
-        }
+        // if (index === 0) {
+        //   element.style.marginTop = '23.5vh'
+        // }
+        // if (textList.length - 1 === index) {
+        //   element.style.marginBottom = '30vh'
+        // }
       }
     })
   }
@@ -93,10 +93,7 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
     container.addEventListener('scroll', handleScroll)
 
     // 首次加载时应用一次动画
-    setTimeout(() => {
-      // applyAnimation()
-      requestAnimationFrame(applyAnimation)
-    }, 2000)
+    applyAnimation()
 
     return () => container.removeEventListener('scroll', handleScroll)
   }, [])
@@ -104,7 +101,10 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
   return (
     <div ref={containerRef} className="text-scroll-wrapper">
       {textList.map((item, index) => (
-        <motion.div className="text-scroll-item" key={index}>
+        <motion.div
+          style={{ marginTop: index === 0 ? '23.5vh' : 0, marginBottom: textList.length - 1 === index ? '30vh' : 0 }}
+          className="text-scroll-item"
+          key={index}>
           {item}
         </motion.div>
       ))}
