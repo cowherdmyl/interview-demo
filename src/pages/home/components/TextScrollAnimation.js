@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const ScrollAnimationExample = ({ setPercent }) => {
+const ScrollAnimationExample = ({ setPercent, setShowText }) => {
   const containerRef = useRef(null)
   const textList = [
     'When you want something,',
@@ -39,6 +39,13 @@ const ScrollAnimationExample = ({ setPercent }) => {
   const applyAnimation = () => {
     const container = containerRef.current
     const containerCenter = container.scrollTop + container.clientHeight / 2
+    const ele2 = document.querySelectorAll('.text-scroll-item')[2]
+    const ele2Center = ele2.offsetTop + ele2.clientHeight / 2
+    if (ele2Center > containerCenter) {
+      setShowText(true)
+    } else {
+      setShowText(false)
+    }
     document.querySelectorAll('.text-scroll-item').forEach((element, index) => {
       if (element) {
         const elementTop = element.offsetTop
