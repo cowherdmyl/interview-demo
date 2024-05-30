@@ -89,7 +89,9 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
     container.addEventListener('scroll', handleScroll)
 
     // 首次加载时应用一次动画
-    applyAnimation()
+    setTimeout(() => {
+      applyAnimation()
+    }, 2000)
 
     return () => container.removeEventListener('scroll', handleScroll)
   }, [])
