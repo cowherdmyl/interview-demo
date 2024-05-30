@@ -21,7 +21,7 @@ function Menus({ percent }) {
     {
       label: (
         <div className="label-style0">
-          <div>INTRODUCTION</div>
+          <div>introduction</div>
           <Progress
             className="progress0"
             showInfo={false}
@@ -39,7 +39,7 @@ function Menus({ percent }) {
     {
       label: (
         <div className="label-style1">
-          <div>THE TECHNOLOGY</div>
+          <div>the technology</div>
           <Progress
             className="progress1"
             showInfo={false}
@@ -57,7 +57,7 @@ function Menus({ percent }) {
     {
       label: (
         <div className="label-style1">
-          <div>TECH SPOTLIGHT</div>
+          <div>tech spotlight</div>
           <Progress
             className="progress1"
             showInfo={false}
@@ -76,7 +76,7 @@ function Menus({ percent }) {
     {
       label: (
         <div className="label-style1">
-          <div>WHY MUSIC</div>
+          <div>why music?</div>
           <Progress
             className="progress1"
             showInfo={false}
@@ -96,11 +96,11 @@ function Menus({ percent }) {
 
   return (
     <div className="menu-container">
-      <Row className="menu-row" align="bottom">
-        <Col span={4} style={{ zIndex: 11 }}>
+      <Row className="menu-row">
+        <Col span={4} className="menu-row-col1">
           <img className="menu-logo-icon" src={logoWhite} alt="img" />
         </Col>
-        <Col flex={1}>
+        <Col flex={1} className="menu-row-col2">
           <Menu
             className="menu-style"
             mode="horizontal"
@@ -109,7 +109,7 @@ function Menus({ percent }) {
             onClick={handleMenuClick}
           />
         </Col>
-        <Col span={4} style={{ zIndex: 11 }}>
+        <Col span={4} className="menu-row-col3">
           <HamburgerMenu setShowHamburgerMask={setShowHamburgerMask} />
         </Col>
       </Row>
