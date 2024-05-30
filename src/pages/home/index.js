@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import Loading from './components/Loading'
 import Menus from './components/Menus'
 import FirstScreen from './components/FirstScreen'
@@ -15,6 +15,10 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('firstScreen')
   // 定义动画状态
   const [isToggled, setIsToggled] = useState(false)
+  // 定义状态来存储触摸开始时的Y坐标
+  const [startY, setStartY] = useState(0)
+  // 定义状态来存储滚动方向
+  const [direction, setDirection] = useState('')
 
   const smoothScrollTo = (startElementRef, targetElementRef, duration) => {
     console.log('执行动画')
@@ -83,8 +87,56 @@ function App() {
     [currentScreen]
   )
 
+  // 触摸屏幕
+  // 处理触摸开始事件
+  const handleTouchStart = e => {
+    const touchY = e.touches[0].clientY
+    setStartY(touchY)
+  }
+
+  // 处理触摸移动事件
+  const handleTouchMove = e => {
+    const moveY = e.touches[0].clientY
+    if (startY === 0) return // 如果没有触摸开始的Y坐标，直接返回
+
+    const diffY = startY - moveY
+    if (diffY > 0) {
+      // 向上滑动
+      setDirection('Up')
+    } else if (diffY < 0) {
+      // 向下滑动
+      setDirection('Down')
+    }
+  }
+
+  // 使用useEffect添加和移除事件监听器
+  useEffect(() => {
+    // 添加事件监听器
+    window.addEventListener('touchstart', handleTouchStart)
+    window.addEventListener('touchmove', handleTouchMove)
+
+    // 清理函数，移除事件监听器
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
+    }
+  }, [startY]) // 依赖项数组中包含startY，确保使用最新的startY值
+
+  const hangleTouchMove = () => {
+    if (direction === 'Up') {
+      // console.log('向下滚动')
+      if (percent === 100) {
+        console.log('到底部了')
+        handleScroll('secondScreen')
+      }
+    } else {
+      // console.log('向上滚动')
+      handleScroll('firstScreen')
+    }
+  }
+
   return (
-    <div ref={appContainerRef} className="app-container" onWheel={handleWheel}>
+    <div ref={appContainerRef} className="app-container" onWheel={handleWheel} onTouchMove={hangleTouchMove}>
       <Loading />
       <Menus percent={percent} handleScroll={handleScroll} />
       <FirstScreen setPercent={setPercent} ref={firstScreenRef} />
