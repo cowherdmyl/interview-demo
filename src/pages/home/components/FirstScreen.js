@@ -7,6 +7,12 @@ function FirstScreen({ setPercent }) {
     <div className="first-screen">
       <VideoPlayer />
       <TextScrollAnimation setPercent={setPercent} />
+      <div className="mouse-animation">
+        <div className="mouse-wrapper">
+          <span className="mouse-wheel"></span>
+        </div>
+        <span className="mouse-text">scroll down</span>
+      </div>
     </div>
   )
 }

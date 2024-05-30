@@ -277,4 +277,58 @@
     display: none;
     /* Chrome, Safari, Opera */
   }
+
+  .mouse-animation {
+    position: absolute;
+    width: calc(100% - 30px);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 46px;
+    z-index: 2;
+
+    .mouse-wrapper {
+      border-radius: 13px;
+      border: 2px solid #b3b3b3;
+      width: 26px;
+      height: 44px;
+      position: absolute;
+      box-sizing: border-box;
+
+      .mouse-wheel {
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        top: 6px;
+        border-radius: 50%;
+        background-color: #b3b3b3;
+        left: 50%;
+        margin-left: -3px;
+        animation: scrollDownKnobAnimation 2s ease infinite;
+      }
+    }
+
+    .mouse-text {
+      position: relative;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-family: "Avenir Next Regular", sans-serif;
+      opacity: 0.7;
+      margin-top: 12px;
+    }
+
+    /* 定义动画关键帧 */
+    @keyframes scrollDownKnobAnimation {
+      0% {
+        top: 6px;
+      }
+
+      100% {
+        top: 12px;
+      }
+    }
+  }
 }
