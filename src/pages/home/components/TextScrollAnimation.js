@@ -81,8 +81,7 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
   useEffect(() => {
     const container = containerRef.current
     const handleScroll = () => {
-      // requestAnimationFrame(applyAnimation)
-      applyAnimation()
+      requestAnimationFrame(applyAnimation)
       const container = containerRef.current
       const percent = (container.scrollTop / (container.scrollHeight - container.clientHeight)) * 100
       setPercent(Math.round(percent))
@@ -91,7 +90,8 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
 
     // 首次加载时应用一次动画
     setTimeout(() => {
-      applyAnimation()
+      // applyAnimation()
+      requestAnimationFrame(applyAnimation)
     }, 2000)
 
     return () => container.removeEventListener('scroll', handleScroll)
