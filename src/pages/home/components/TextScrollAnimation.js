@@ -81,7 +81,8 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
   useEffect(() => {
     const container = containerRef.current
     const handleScroll = () => {
-      requestAnimationFrame(applyAnimation)
+      // requestAnimationFrame(applyAnimation)
+      applyAnimation()
       const container = containerRef.current
       const percent = (container.scrollTop / (container.scrollHeight - container.clientHeight)) * 100
       setPercent(Math.round(percent))
