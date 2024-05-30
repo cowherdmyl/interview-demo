@@ -9,7 +9,7 @@ function Loading() {
     // 模拟加载过程
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 0) // 假设加载过程需要3秒
+    }, 3000) // 假设加载过程需要3秒
 
     return () => clearTimeout(timer)
   }, [])
