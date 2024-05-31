@@ -19,6 +19,7 @@ function App() {
   // 触摸
   const [startY, setStartY] = useState(0)
   const [direction, setDirection] = useState('')
+  const [distance, setDistance] = useState(0)
 
   const handleWheel = event => {
     if (event.deltaY > 0) {
@@ -45,7 +46,10 @@ function App() {
       setDirection('Down')
     }
   }
-
+  useEffect(() => {
+    const offsetTop = secondScreenRef.current.offsetTop
+    setDistance(offsetTop)
+  }, [])
   useEffect(() => {
     //内容up
     if (direction === 'Up' && currentScreen === 'firstScreen') {
@@ -64,22 +68,22 @@ function App() {
     target => {
       if (target === 'secondScreen') {
         // 直接操作DOM hidden 第二屏幕和过渡盒TransitionBox
-        // transitionBoxRef.current.style.display = 'block'
-        // secondScreenRef.current.style.display = 'block'
+        transitionBoxRef.current.style.display = 'block'
+        secondScreenRef.current.style.display = 'block'
         setIsToggled(true)
-        smoothScrollTo(appContainerRef.current, secondScreenRef.current, 1500).then(() => {
-          // firstScreenRef.current.style.display = 'none'
-          // transitionBoxRef.current.style.display = 'none'
+        smoothScrollTo(appContainerRef.current, secondScreenRef.current, 1500, target).then(() => {
+          firstScreenRef.current.style.display = 'none'
+          transitionBoxRef.current.style.display = 'none'
           setCurrentScreen('secondScreen')
         })
       }
       if (target === 'firstScreen') {
-        // firstScreenRef.current.style.display = 'block'
-        // transitionBoxRef.current.style.display = 'block'
+        firstScreenRef.current.style.display = 'block'
+        transitionBoxRef.current.style.display = 'block'
         setIsToggled(true)
-        smoothScrollTo(appContainerRef.current, firstScreenRef.current, 1500).then(() => {
-          // transitionBoxRef.current.style.display = 'none'
-          // secondScreenRef.current.style.display = 'none'
+        smoothScrollTo(appContainerRef.current, firstScreenRef.current, 1500, target).then(() => {
+          transitionBoxRef.current.style.display = 'none'
+          secondScreenRef.current.style.display = 'none'
           setCurrentScreen('firstScreen')
         })
       }
@@ -88,16 +92,16 @@ function App() {
     { leading: true, trailing: false }
   )
 
-  const smoothScrollTo = (startElementRef, targetElementRef, duration) => {
+  const smoothScrollTo = (startElementRef, targetElementRef, duration, target) => {
     return new Promise((resolve, reject) => {
       if (!startElementRef || !targetElementRef) {
         reject(new Error('Element reference not found.'))
       }
-      const startPosition = startElementRef.scrollTop
-      const targetPosition = targetElementRef.offsetTop
+      const startPosition = target === 'secondScreen' ? 0 : distance
+      const targetPosition = target === 'secondScreen' ? distance : 0
       console.log('startPosition', startPosition)
       console.log('targetPosition', targetPosition)
-      const distance = targetPosition - startPosition
+      const distanceN = targetPosition - startPosition
       let startTime = null
       const easeInOutQuad = (t, b, c, d, power) => {
         t /= d
@@ -106,7 +110,7 @@ function App() {
       const animation = currentTime => {
         if (startTime === null) startTime = currentTime
         const timeElapsed = currentTime - startTime
-        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration, 3)
+        const run = easeInOutQuad(timeElapsed, startPosition, distanceN, duration, 3)
         startElementRef.scrollTop = run
         if (timeElapsed < duration) {
           requestAnimationFrame(animation)
