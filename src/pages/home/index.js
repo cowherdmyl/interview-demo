@@ -51,8 +51,8 @@ function App() {
   useEffect(() => {
     const offsetTop = secondScreenRef.current.offsetTop
     setDistance(offsetTop)
-    transitionBoxRef.current.style.display = 'none'
-    secondScreenRef.current.style.display = 'none'
+    // transitionBoxRef.current.style.display = 'none'
+    // secondScreenRef.current.style.display = 'none'
   }, [])
   useEffect(() => {
     //内容up
