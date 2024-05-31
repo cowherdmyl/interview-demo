@@ -3,9 +3,9 @@ import { Menu, Row, Col, Progress } from 'antd'
 import logoWhite from '../../../assets/logo-white.svg'
 import HamburgerMenu from './HamburgerMenu'
 import HamburgerMask from './HamburgerMask'
+import { motion } from 'framer-motion'
 
-function Menus({ percent, setDirection }) {
-  const [menukey, setMenukey] = useState('0')
+function Menus({ percent, setDirection, handleScroll, menukey, setMenukey }) {
   const [showHamburgerMask, setShowHamburgerMask] = useState(false)
   const handleMenuClick = e => {
     setMenukey(e.key)
@@ -15,23 +15,37 @@ function Menus({ percent, setDirection }) {
     }
     if (e.key === '1') {
       setDirection('Up')
+      handleScroll('secondScreen')
     }
   }
+  // 定义动画变体
+  const variants = {
+    visible: { opacity: 1, display: 'block' },
+    hidden: { opacity: 0, display: 'none' },
+  }
+
   const menuItems = [
     {
       label: (
         <div className="label-style0">
           <div>introduction</div>
-          <Progress
-            className="progress0"
-            showInfo={false}
-            strokeLinecap="butt"
-            strokeColor="white"
-            trailColor="#aaa"
-            percent={percent}
-            size="small"
-            style={{ display: menukey === '0' ? 'block' : 'none' }}
-          />
+          <motion.div
+            className="progress0-wrapper"
+            initial="hidden" // 初始状态
+            animate={menukey === '0' ? 'visible' : 'hidden'} // 动画状态
+            variants={variants} // 使用定义的变体
+            transition={{ duration: 0.5 }} // 动画过渡属性
+          >
+            <Progress
+              className="progress0"
+              showInfo={false}
+              strokeLinecap="butt"
+              strokeColor="white"
+              trailColor="#aaa"
+              percent={percent}
+              size="small"
+            />
+          </motion.div>
         </div>
       ),
       key: '0',
@@ -40,16 +54,23 @@ function Menus({ percent, setDirection }) {
       label: (
         <div className="label-style1">
           <div>the technology</div>
-          <Progress
-            className="progress1"
-            showInfo={false}
-            strokeLinecap="butt"
-            strokeColor="white"
-            trailColor="#aaa"
-            percent={100}
-            size="small"
-            style={{ display: menukey === '1' ? 'block' : 'none' }}
-          />
+          <motion.div
+            className="progress1-wrapper"
+            initial="hidden" // 初始状态
+            animate={menukey === '1' ? 'visible' : 'hidden'} // 动画状态
+            variants={variants} // 使用定义的变体
+            transition={{ duration: 0.5 }} // 动画过渡属性
+          >
+            <Progress
+              className="progress1"
+              showInfo={false}
+              strokeLinecap="butt"
+              strokeColor="white"
+              trailColor="#aaa"
+              percent={100}
+              size="small"
+            />
+          </motion.div>
         </div>
       ),
       key: '1',

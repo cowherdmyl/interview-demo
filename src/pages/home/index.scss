@@ -227,19 +227,32 @@ html {
       .progress0,
       .progress1 {
         position: absolute;
-        bottom: 0
+        bottom: 0;
+        left: 0;
       }
     }
 
     .label-style0:hover {
+      .progress0-wrapper {
+        display: block !important;
+        opacity: 1 !important;
+      }
+
       .progress0 {
         display: block !important;
+        opacity: 1 !important;
       }
     }
 
     .label-style1:hover {
+      .progress1-wrapper {
+        display: block !important;
+        opacity: 1 !important;
+      }
+
       .progress1 {
         display: block !important;
+        opacity: 1 !important;
       }
     }
   }

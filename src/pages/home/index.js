@@ -20,6 +20,8 @@ function App() {
   const [startY, setStartY] = useState(0)
   const [direction, setDirection] = useState('')
   const [distance, setDistance] = useState(0)
+  // 设置菜单
+  const [menukey, setMenukey] = useState('0')
 
   const handleWheel = event => {
     if (event.deltaY > 0) {
@@ -76,6 +78,7 @@ function App() {
           firstScreenRef.current.style.display = 'none'
           transitionBoxRef.current.style.display = 'none'
           setCurrentScreen('secondScreen')
+          setMenukey('1')
         })
       }
       if (target === 'firstScreen') {
@@ -92,6 +95,7 @@ function App() {
           transitionBoxRef.current.style.display = 'none'
           secondScreenRef.current.style.display = 'none'
           setCurrentScreen('firstScreen')
+          setMenukey('0')
         })
       }
     },
@@ -137,7 +141,13 @@ function App() {
       onTouchStart={handleTouchStart}
       onTouchMove={hangleTouchMove}>
       <Loading />
-      <Menus percent={percent} setDirection={setDirection} />
+      <Menus
+        percent={percent}
+        setDirection={setDirection}
+        handleScroll={handleScroll}
+        menukey={menukey}
+        setMenukey={setMenukey}
+      />
       <div className="img-side"></div>
       <FirstScreen ref={firstScreenRef} setPercent={setPercent} />
       <TransitionBox ref={transitionBoxRef} isToggled={isToggled} setIsToggled={setIsToggled} />
