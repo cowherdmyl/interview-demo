@@ -398,12 +398,13 @@ html {
   .transition-box-up {
     background-color: rgb(230, 230, 230);
     width: 100vw;
+    height: 100vh;
   }
 
   .transition-box-down {
     background-color: rgb(53, 1, 127);
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
   }
 }
 

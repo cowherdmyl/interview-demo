@@ -95,6 +95,8 @@ function App() {
       }
       const startPosition = startElementRef.scrollTop
       const targetPosition = targetElementRef.offsetTop
+      console.log('startPosition', startPosition)
+      console.log('targetPosition', targetPosition)
       const distance = targetPosition - startPosition
       let startTime = null
       const easeInOutQuad = (t, b, c, d, power) => {
