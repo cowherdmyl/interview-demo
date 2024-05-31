@@ -20,10 +20,16 @@ function App() {
   const [startY, setStartY] = useState(0)
   const [direction, setDirection] = useState('')
   const [distance, setDistance] = useState(0)
+  const [isFirstRender, setIsFirstRender] = useState(true)
   // 设置菜单
   const [menukey, setMenukey] = useState('0')
 
   const handleWheel = event => {
+    if (isFirstRender) {
+      transitionBoxRef.current.style.display = 'none'
+      secondScreenRef.current.style.display = 'none'
+      setIsFirstRender(false)
+    }
     if (event.deltaY > 0) {
       console.log('设置up')
       setDirection('Up')
@@ -34,6 +40,11 @@ function App() {
   }
   // 触摸屏幕
   const handleTouchStart = e => {
+    if (isFirstRender) {
+      transitionBoxRef.current.style.display = 'none'
+      secondScreenRef.current.style.display = 'none'
+      setIsFirstRender(false)
+    }
     const touchY = e.touches[0].clientY
     setStartY(touchY)
   }
@@ -51,6 +62,7 @@ function App() {
   useEffect(() => {
     const offsetTop = secondScreenRef.current.offsetTop
     setDistance(offsetTop)
+    setIsFirstRender(true)
     // transitionBoxRef.current.style.display = 'none'
     // secondScreenRef.current.style.display = 'none'
   }, [])
