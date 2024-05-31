@@ -41,7 +41,7 @@ html {
   }
 
   .menu-row-col1 {
-    z-index: 11;
+    z-index: 12;
     padding-top: 46px;
   }
 
@@ -50,7 +50,7 @@ html {
   }
 
   .menu-row-col3 {
-    z-index: 11;
+    z-index: 12;
     padding-top: 46px;
   }
 }
@@ -81,7 +81,7 @@ html {
   }
 
   .menu-row-col1 {
-    z-index: 11;
+    z-index: 12;
     padding-top: 30px;
   }
 
@@ -90,13 +90,26 @@ html {
   }
 
   .menu-row-col3 {
-    z-index: 11;
+    z-index: 12;
     padding-top: 30px;
   }
 }
 
 // 移动设备
 @media (max-width: 768px) {
+  .img-side {
+    width: 60px;
+    height: 105px;
+    top: 60px;
+    position: absolute;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/awwwards-ribbon.png');
+    z-index: 11;
+    display: block;
+  }
+
   .hamburger-menu {
     width: 28px;
     height: 28px;
@@ -127,6 +140,19 @@ html {
 
 // PC+平板
 @media (min-width: 768px) {
+  .img-side {
+    width: 90px;
+    height: 135px;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/awwwards-ribbon.png');
+    z-index: 11;
+    display: block;
+  }
+
   .hamburger-menu {
     width: 34px;
     height: 34px;

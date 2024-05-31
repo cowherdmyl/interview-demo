@@ -127,6 +127,7 @@ function App() {
       onTouchMove={hangleTouchMove}>
       <Loading />
       <Menus percent={percent} setDirection={setDirection} />
+      <div className="img-side"></div>
       <FirstScreen ref={firstScreenRef} setPercent={setPercent} />
       <TransitionBox ref={transitionBoxRef} isToggled={isToggled} setIsToggled={setIsToggled} />
       <SecondScreen ref={secondScreenRef} />
