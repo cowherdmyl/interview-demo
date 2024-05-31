@@ -78,9 +78,13 @@ function App() {
         })
       }
       if (target === 'firstScreen') {
-        firstScreenRef.current.style.display = 'block'
-        transitionBoxRef.current.style.display = 'block'
-        setIsToggled(true)
+        setTimeout(() => {
+          firstScreenRef.current.style.display = 'block'
+          transitionBoxRef.current.style.display = 'block'
+        }, 200)
+        setTimeout(() => {
+          setIsToggled(true)
+        }, 0)
         smoothScrollTo(appContainerRef.current, firstScreenRef.current, 1500, target).then(() => {
           transitionBoxRef.current.style.display = 'none'
           secondScreenRef.current.style.display = 'none'

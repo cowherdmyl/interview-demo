@@ -23,7 +23,7 @@ const TransitionBox = ({ isToggled, setIsToggled }, ref) => {
         transition={{
           duration: 0.4,
           ease: 'easeOut',
-          delay: 0.01,
+          delay: 0.1,
         }}
         onAnimationComplete={handleAnimationComplete} // 动画完成时的回调
       ></motion.div>
