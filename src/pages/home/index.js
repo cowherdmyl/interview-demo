@@ -62,12 +62,13 @@ function App() {
 
   const handleScroll = throttle(
     target => {
+      console.log('scroll')
       if (target === 'secondScreen') {
         // 直接操作DOM hidden 第二屏幕和过渡盒TransitionBox
         // transitionBoxRef.current.style.display = 'block'
         // secondScreenRef.current.style.display = 'block'
         setIsToggled(true)
-        smoothScrollTo(appContainerRef.current, secondScreenRef.current, 1500).then(() => {
+        smoothScrollTo(appContainerRef.current, secondScreenRef.current, 2000).then(() => {
           // firstScreenRef.current.style.display = 'none'
           // transitionBoxRef.current.style.display = 'none'
           setCurrentScreen('secondScreen')
@@ -77,7 +78,7 @@ function App() {
         // firstScreenRef.current.style.display = 'block'
         // transitionBoxRef.current.style.display = 'block'
         setIsToggled(true)
-        smoothScrollTo(appContainerRef.current, firstScreenRef.current, 1500).then(() => {
+        smoothScrollTo(appContainerRef.current, firstScreenRef.current, 2000).then(() => {
           // transitionBoxRef.current.style.display = 'none'
           // secondScreenRef.current.style.display = 'none'
           setCurrentScreen('firstScreen')

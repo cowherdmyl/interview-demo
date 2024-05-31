@@ -21,7 +21,7 @@ const TransitionBox = ({ isToggled, setIsToggled }, ref) => {
         animate={isToggled ? 'animate' : 'initial'} // 根据isToggled状态切换动画
         variants={variants} // 应用定义的变体
         transition={{
-          duration: 0.5,
+          duration: 0.4,
           ease: 'easeOut',
           delay: 0.01,
         }}
