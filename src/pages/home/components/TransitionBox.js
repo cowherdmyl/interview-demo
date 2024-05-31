@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const TransitionBox = ({ showTransitionBox = true, isToggled, setIsToggled }) => {
+const TransitionBox = ({ isToggled, setIsToggled }, ref) => {
   // 动画变体（variants），用于定义动画的初始状态和结束状态
   const variants = {
     initial: { height: '20vh' }, // 初始高度
@@ -14,14 +14,14 @@ const TransitionBox = ({ showTransitionBox = true, isToggled, setIsToggled }) =>
   }
 
   return (
-    <div className="transition-box-wrapper" style={{ display: showTransitionBox ? 'block' : 'none' }}>
+    <div ref={ref} className="transition-box-wrapper">
       <motion.div
         className="transition-box-up"
         initial="initial" // 初始动画状态
         animate={isToggled ? 'animate' : 'initial'} // 根据isToggled状态切换动画
         variants={variants} // 应用定义的变体
         transition={{
-          duration: 0.5,
+          duration: 0.7,
           ease: 'easeOut',
           delay: 0.9,
         }}
@@ -32,4 +32,4 @@ const TransitionBox = ({ showTransitionBox = true, isToggled, setIsToggled }) =>
   )
 }
 
-export default TransitionBox
+export default React.forwardRef(TransitionBox)

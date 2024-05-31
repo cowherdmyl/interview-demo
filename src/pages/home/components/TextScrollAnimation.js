@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const ScrollAnimationExample = ({ setPercent, setShowText, handleTopScroll }) => {
+const ScrollAnimationExample = ({ setPercent, setShowText }) => {
   const containerRef = useRef(null)
   const textList = [
     'When you want something,',
@@ -89,9 +89,6 @@ const ScrollAnimationExample = ({ setPercent, setShowText, handleTopScroll }) =>
       const container = containerRef.current
       const percent = (container.scrollTop / (container.scrollHeight - container.clientHeight)) * 100
       setPercent(Math.round(percent))
-      if (Math.round(percent) === 100) {
-        handleTopScroll('secondScreen')
-      }
     }
     container.addEventListener('scroll', handleScroll)
 
@@ -105,7 +102,7 @@ const ScrollAnimationExample = ({ setPercent, setShowText, handleTopScroll }) =>
     <div ref={containerRef} className="text-scroll-wrapper">
       {textList.map((item, index) => (
         <motion.div
-          style={{ marginTop: index === 0 ? '23.5vh' : 0, marginBottom: textList.length - 1 === index ? '30vh' : 0 }}
+          style={{ marginTop: index === 0 ? '25vh' : 0, marginBottom: textList.length - 1 === index ? '30vh' : 0 }}
           className="text-scroll-item"
           key={index}>
           {item}
