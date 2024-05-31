@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const ScrollAnimationExample = ({ setPercent, setShowText }) => {
+const ScrollAnimationExample = ({ setPercent, setShowText, handleTopScroll }) => {
   const containerRef = useRef(null)
   const textList = [
     'When you want something,',
@@ -89,6 +89,9 @@ const ScrollAnimationExample = ({ setPercent, setShowText }) => {
       const container = containerRef.current
       const percent = (container.scrollTop / (container.scrollHeight - container.clientHeight)) * 100
       setPercent(Math.round(percent))
+      if (Math.round(percent) === 100) {
+        handleTopScroll('secondScreen')
+      }
     }
     container.addEventListener('scroll', handleScroll)
 

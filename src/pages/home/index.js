@@ -139,7 +139,7 @@ function App() {
     <div ref={appContainerRef} className="app-container" onWheel={handleWheel} onTouchMove={hangleTouchMove}>
       <Loading />
       <Menus percent={percent} handleScroll={handleScroll} />
-      <FirstScreen setPercent={setPercent} ref={firstScreenRef} />
+      <FirstScreen setPercent={setPercent} ref={firstScreenRef} handleTopScroll={handleScroll} />
       <TransitionBox isToggled={isToggled} setIsToggled={setIsToggled} />
       <SecondScreen ref={secondScreenRef} />
     </div>

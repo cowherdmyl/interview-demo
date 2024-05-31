@@ -3,12 +3,12 @@ import VideoPlayer from './VideoPlayer'
 import TextScrollAnimation from './TextScrollAnimation'
 import { motion } from 'framer-motion'
 
-function FirstScreen({ setPercent, showFirstScreen = true }, ref) {
+function FirstScreen({ setPercent, showFirstScreen = true, handleTopScroll }, ref) {
   const [showText, setShowText] = useState(true)
   return (
     <div ref={ref} className="first-screen" style={{ display: showFirstScreen ? 'block' : 'none' }}>
       <VideoPlayer />
-      <TextScrollAnimation setPercent={setPercent} setShowText={setShowText} />
+      <TextScrollAnimation setPercent={setPercent} setShowText={setShowText} handleTopScroll={handleTopScroll} />
       {/* 中间底部小滚轮 */}
       <div className="mouse-animation">
         <div className="mouse-wrapper">
